@@ -715,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f56d0e5d4d0c364faf10f1627e00f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsItemInInventory: 0
   limitItems: 10
   posFirstItem: {x: 0, y: 0, z: 0.325}
   offsetPosItem: {x: 0, y: 0.533, z: 0}
@@ -761,7 +762,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 360297143}
-  - component: {fileID: 360297142}
   - component: {fileID: 360297141}
   - component: {fileID: 360297140}
   m_Layer: 0
@@ -822,18 +822,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &360297142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360297139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &360297143
 Transform:
   m_ObjectHideFlags: 0
@@ -888,7 +876,7 @@ Animator:
   m_GameObject: {fileID: 919132148584586686}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2287a2b0b76a6ea48a95561d1ec5eebd, type: 3}
-  m_Controller: {fileID: 9100000, guid: 827e0eb2574d42d499fc3e3772d77491, type: 2}
+  m_Controller: {fileID: 9100000, guid: 375385b4f5bc4934ab78f18973101ce6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1738,7 +1726,6 @@ GameObject:
   - component: {fileID: 922357764}
   - component: {fileID: 922357767}
   - component: {fileID: 922357766}
-  - component: {fileID: 922357765}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1760,18 +1747,6 @@ Transform:
   m_Father: {fileID: 267077494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &922357765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922357763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &922357766
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2222,6 +2197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938c0ba0b392f45b3c33fd83fb0bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsItemInInventory: 0
   limitItems: 10
   posFirstItem: {x: 0.2, y: 0, z: -0.29}
   offsetPosItem: {x: 0, y: 0, z: 0.1}
@@ -3044,6 +3020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff938c0ba0b392f45b3c33fd83fb0bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsItemInInventory: 0
   limitItems: 10
   posFirstItem: {x: 0, y: 0, z: 0}
   offsetPosItem: {x: 0, y: 0.41, z: 0}
@@ -5503,6 +5480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be5dc8fdc447ba479400f8d5edf2a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsItemInInventory: 0
   limitItems: 10
   posFirstItem: {x: -0.73, y: 0, z: 1.36}
   offsetPosItem: {x: 0, y: 0.545, z: 0}
@@ -5620,6 +5598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab84a0fefbc8a34eb833fdeb9296b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 430398372}
   _joystick: {fileID: 1153211176}
   _moveSpeed: 7
   _rotateSpeed: 7

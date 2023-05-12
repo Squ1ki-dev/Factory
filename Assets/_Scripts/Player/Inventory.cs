@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance;
+
+    public bool IsItemInInventory;
     [SerializeField] private int limitItems = 10;
     
     [SerializeField] private Vector3 posFirstItem = Vector3.zero;
@@ -13,6 +16,8 @@ public class Inventory : MonoBehaviour
     private List<GameObject> allObjectsItems = new List<GameObject>();
 
     public int countItems { get { return allObjectsItems.Count; } }
+
+    private void Awake() => Instance = this;
     
     public virtual bool IsCanAddItem(GameObject objItem) 
     {
@@ -38,7 +43,8 @@ public class Inventory : MonoBehaviour
         int index = allObjectsItems.Count;
         allObjectsItems.Add(objItem);
         objItem.transform.SetParent(gameObject.transform);
-
+        
+        IsItemInInventory = true;
         MoveItemToIndexPos(move, index);
 
         return true;
@@ -69,6 +75,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(GameObject objItem) 
     {
+        IsItemInInventory = false;
         allObjectsItems.Remove(objItem);
         UpdatePosItems();
     }
