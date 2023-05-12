@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StorageOutputItem : StorageBase 
+public class StorageOutputItem : StorageBase
 {
-    protected override void MoveItem() 
+    protected override void MoveItem()
     {
-        GameObject item = GetLastItem();
+        GameObject item = Inventory.GetLastItem();
 
-        if (item != null && _inventoryInTrigger.IsCanAddItem(item)) 
+        if (item != null && _inventoryInTrigger.IsCanAddItem(item))
         {
-            RemoveItem(item);
+            Inventory.RemoveItem(item);
             _inventoryInTrigger.AddItem(item);
         }
     }

@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
+using Tools;
 using UnityEngine;
-
-public class Inventory : MonoBehaviour
+[System.Serializable]
+public class Inventory
 {
-    public static Inventory Instance;
+    // public static Inventory Instance;
 
-    public bool IsItemInInventory;
+    public bool IsItemInInventory { get; private set; }
     [SerializeField] private int limitItems = 10;
-    
-    [SerializeField] private Vector3 posFirstItem = Vector3.zero;
+    [SerializeField] private Transform itemsContainer;
+    private Vector3 posFirstItem => itemsContainer.localPosition;
     [SerializeField] private Vector3 offsetPosItem = Vector3.zero;
     [SerializeField] private Vector3 rotationItem = Vector3.zero;
 
     private List<GameObject> allObjectsItems = new List<GameObject>();
 
-    public int countItems { get { return allObjectsItems.Count; } }
+    public int countItems => allObjectsItems.Count;
 
-    private void Awake() => Instance = this;
-    
-    public virtual bool IsCanAddItem(GameObject objItem) 
+    // private void Awake() => Instance = this;
+
+    public virtual bool IsCanAddItem(GameObject objItem)
     {
         Item item = objItem.GetComponent<Item>();
         if (item == null) return false;
@@ -32,7 +34,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public bool AddItem(GameObject objItem) 
+    public bool AddItem(GameObject objItem)
     {
         Item item = objItem.GetComponent<Item>();
         if (item == null) return false;
@@ -42,29 +44,29 @@ public class Inventory : MonoBehaviour
 
         int index = allObjectsItems.Count;
         allObjectsItems.Add(objItem);
-        objItem.transform.SetParent(gameObject.transform);
-        
+        objItem.transform.SetParent(itemsContainer);
+
         IsItemInInventory = true;
         MoveItemToIndexPos(move, index);
 
         return true;
     }
 
-    public GameObject GetLastItem(Item.TypeItem typeItem) => GetLastItem(new Item.TypeItem[]{typeItem});
+    public GameObject GetLastItem(Item.TypeItem typeItem) => GetLastItem(new Item.TypeItem[] { typeItem });
 
-    public GameObject GetLastItem(Item.TypeItem[] typesItems) 
+    public GameObject GetLastItem(Item.TypeItem[] typesItems)
     {
-        for(int i = allObjectsItems.Count - 1; i >= 0; --i) 
+        for (int i = allObjectsItems.Count - 1; i >= 0; --i)
         {
             GameObject objItem = allObjectsItems[i];
             Item item = objItem.GetComponent<Item>();
-            if(Array.IndexOf(typesItems, (item.type)) != -1) return objItem;
+            if (Array.IndexOf(typesItems, (item.type)) != -1) return objItem;
         }
 
         return null;
     }
 
-    public GameObject GetLastItem() 
+    public GameObject GetLastItem()
     {
         int lastIndex = allObjectsItems.Count - 1;
 
@@ -73,16 +75,17 @@ public class Inventory : MonoBehaviour
         return objItem;
     }
 
-    public void RemoveItem(GameObject objItem) 
+    public void RemoveItem(GameObject objItem)
     {
-        IsItemInInventory = false;
         allObjectsItems.Remove(objItem);
+        
+        IsItemInInventory = allObjectsItems.Count > 0;
         UpdatePosItems();
     }
 
-     public void UpdatePosItems() 
-     {
-        for (int i = 0; i < allObjectsItems.Count; ++i) 
+    public void UpdatePosItems()
+    {
+        for (int i = 0; i < allObjectsItems.Count; ++i)
         {
             GameObject objItem = allObjectsItems[i];
 
@@ -91,8 +94,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void MoveItemToIndexPos(MoverGameObject move, int index) 
+    private void MoveItemToIndexPos(MoverGameObject move, int index)
     {
-        move.MoveTo(posFirstItem + (offsetPosItem * index), rotationItem);
+        var targetPos = (offsetPosItem * index);
+        move.MoveTo(targetPos, rotationItem);
     }
 }

@@ -76,22 +76,22 @@ public class Factory : MonoBehaviour
     {
         if (_inputItems != null && _receipt != null) 
         {
-            if (_inputItems.countItems < _receipt.Length) return false;
+            if (_inputItems.Inventory.countItems < _receipt.Length) return false;
             var removedItemsFromInventory = new List<GameObject>();
 
             foreach (Item.TypeItem typeItem in _receipt) 
             {
-                GameObject objItem = _inputItems.GetLastItem(typeItem);
+                GameObject objItem = _inputItems.Inventory.GetLastItem(typeItem);
                 if (objItem == null) 
                 {
                     foreach (GameObject remObjItem in removedItemsFromInventory) 
                     {
-                        _inputItems.AddItem(remObjItem);
+                        _inputItems.Inventory.AddItem(remObjItem);
                     }
                     return false;
                 }
 
-                _inputItems.RemoveItem(objItem);
+                _inputItems.Inventory.RemoveItem(objItem);
                 removedItemsFromInventory.Add(objItem);
             }
             Transform transform = gameObject.transform;
@@ -116,7 +116,7 @@ public class Factory : MonoBehaviour
         transformItem.position = transform.TransformPoint(_createdItemPos);
         transformItem.rotation = transform.rotation * Quaternion.Euler(_createdItemRotation);
 
-        if (!_outputItems.AddItem(objItem)) 
+        if (!_outputItems.Inventory.AddItem(objItem)) 
             Debug.LogError("Error add item to storage");
     }
 

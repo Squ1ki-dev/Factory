@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class Player
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private CharacterController chController;
     private void Move()
     {
         _moveVector = Vector3.zero;
@@ -17,15 +18,13 @@ public partial class Player
             transform.rotation = Quaternion.LookRotation(direction);
 
             _animator.SetBool("isRunning", true);
-            _animator.SetBool("boxWalking", Inventory.Instance.IsItemInInventory);
-            _animator.SetBool("boxIdle", !Inventory.Instance.IsItemInInventory);
-            
-
+            _animator.SetBool("boxWalking", inventory.IsItemInInventory);
+            _animator.SetBool("boxIdle", !inventory.IsItemInInventory);
         }
         else
         {
             _animator.SetBool("isRunning", false);
-            if(Inventory.Instance.IsItemInInventory == true)
+            if(inventory.IsItemInInventory == true)
             {
                 _animator.SetBool("boxIdle", true);
                 _animator.SetBool("boxWalking", false);
@@ -34,7 +33,7 @@ public partial class Player
                 _animator.SetBool("boxIdle", false);
                 
         }
-
-        _rigidbody.MovePosition(_rigidbody.position + _moveVector);
+        chController.Move(_moveVector);
+        // _rigidbody.MovePosition(_rigidbody.position + _moveVector);
     }
 }
