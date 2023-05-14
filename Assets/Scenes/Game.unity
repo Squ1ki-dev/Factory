@@ -739,13 +739,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactType: 0
   storage:
-    posForFirstItem: {fileID: 448616656}
-    offsetY: 3
+    <root>k__BackingField: {fileID: 448616656}
     inventory:
-      possibleItems:
+      <possibleItems>k__BackingField:
       - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
       limitItems: 10
+    offsetY: 3
 --- !u!1 &339453578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,13 +2772,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactType: 0
   storage:
-    posForFirstItem: {fileID: 1085085339}
-    offsetY: 3
+    <root>k__BackingField: {fileID: 1085085339}
     inventory:
-      possibleItems:
+      <possibleItems>k__BackingField:
       - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
       limitItems: 10
+    offsetY: 3
 --- !u!1 &1117079940
 GameObject:
   m_ObjectHideFlags: 3
@@ -3681,13 +3683,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactType: 0
   storage:
-    posForFirstItem: {fileID: 686801442}
-    offsetY: 3
+    <root>k__BackingField: {fileID: 686801442}
     inventory:
-      possibleItems:
+      <possibleItems>k__BackingField:
       - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
       limitItems: 10
+    offsetY: 3
 --- !u!43 &1454452685
 Mesh:
   m_ObjectHideFlags: 0
@@ -6488,13 +6491,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <storage>k__BackingField:
-    posForFirstItem: {fileID: 1252034369}
-    offsetY: 0.6
+    <root>k__BackingField: {fileID: 1252034369}
     inventory:
-      possibleItems:
+      <possibleItems>k__BackingField:
       - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
       limitItems: 10
-  <takeTime>k__BackingField: 1
+    offsetY: 0.6
+  <takeTime>k__BackingField: 0.1
   _joystick: {fileID: 1153211176}
   _moveSpeed: 7
   _rotateSpeed: 7
