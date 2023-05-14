@@ -10,7 +10,10 @@ public class Inventory
     public List<Item> items { get; private set; }
     [SerializeField] private int limitItems = 10;
     public bool IsEmpty { get; private set; }
-    public virtual void AddItem() {}
-    public virtual void RemoveItem() {}
+    public bool IsFull { get; private set; }
+    public virtual bool AddItem(Item item) => true;
+    public virtual bool RemoveItem(ItemConfig item) => true;
+    public virtual bool IsPossibleItem(Item item) => true;
+    public virtual bool ItemExistInInventory(ItemConfig item) => true;
 
 }

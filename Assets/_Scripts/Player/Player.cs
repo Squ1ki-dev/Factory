@@ -5,7 +5,7 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour
 {
-    [field: SerializeField] public Inventory inventory { get; private set; }
+    [field: SerializeField] public StorageVertical storage { get; private set; }
     [SerializeField] private FloatingJoystick _joystick;
 
     [SerializeField] private float _moveSpeed;

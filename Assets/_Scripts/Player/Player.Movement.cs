@@ -18,13 +18,13 @@ public partial class Player
             transform.rotation = Quaternion.LookRotation(direction);
 
             _animator.SetBool("isRunning", true);
-            _animator.SetBool("boxWalking", inventory.IsEmpty);
-            _animator.SetBool("boxIdle", !inventory.IsEmpty);
+            _animator.SetBool("boxWalking", storage.IsEmpty);
+            _animator.SetBool("boxIdle", !storage.IsEmpty);
         }
         else
         {
             _animator.SetBool("isRunning", false);
-            if(inventory.IsEmpty == true)
+            if(storage.IsEmpty == true)
             {
                 _animator.SetBool("boxIdle", true);
                 _animator.SetBool("boxWalking", false);

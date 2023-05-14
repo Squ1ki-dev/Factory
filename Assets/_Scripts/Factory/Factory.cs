@@ -6,17 +6,8 @@ using UnityEngine.Events;
 
 public class Factory : MonoBehaviour
 {
-    public enum ReasonStop
-    {
-        NoResource,
-        FullStorage
-    }
-    [Header("Storage")]
-    [SerializeField] private IStorage _inputItems = null;
-    [SerializeField] private IStorage _outputItems = null;
-
-    [Header("Process create")]
-    [SerializeField] private Vector3 _removedPosItem = Vector3.zero;
+    [SerializeField] private BaseStorage _inputItems = null;
+    [SerializeField] private BaseStorage _outputItems = null;
     [SerializeField] private float timeForOneCreate = 2f;
     [SerializeField] private Receipt receipt;
 
@@ -29,13 +20,11 @@ public class Factory : MonoBehaviour
     {
         while (true)
         {
-            if (!_inputItems.isEmpty && !_outputItems.isFull)
+            if (!_inputItems.IsEmpty && !_outputItems.IsFull && !receipt.put.Any(item => !_inputItems.ItemExistInStorage(item)))
             {
-                if (!receipt.put.Any(item => !_inputItems.Hes(item.itemView)))
-                {
-                    receipt.put.ForEach(item => _inputItems.Remove(item.itemView));
-                    _outputItems.Add(receipt.get.itemView);
-                }
+                receipt.put.ForEach(item => _inputItems.Remove(item));
+                _outputItems.Add(receipt.get.itemViewPrefab);
+
                 yield return new WaitForSeconds(timeForOneCreate);
             }
             else yield return null;
