@@ -1,123 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Factory : MonoBehaviour 
+public class Factory : MonoBehaviour
 {
     public enum ReasonStop
-    { 
-        NoResource, 
-        FullStorage 
+    {
+        NoResource,
+        FullStorage
     }
-
-    private bool isWork = false;
-
-    [Header("Created Item")]
-    [SerializeField] private GameObject _createdItem = null;
-    [SerializeField] private Vector3 _createdItemPos = Vector3.zero;
-    [SerializeField] private Vector3 _createdItemRotation = Vector3.zero;
-
     [Header("Storage")]
-    [SerializeField] private StorageBase _inputItems = null;
-    [SerializeField] private StorageBase _outputItems = null;
+    [SerializeField] private IStorage _inputItems = null;
+    [SerializeField] private IStorage _outputItems = null;
 
     [Header("Process create")]
     [SerializeField] private Vector3 _removedPosItem = Vector3.zero;
-    [SerializeField] private float _timeCreatedItem = 10f;
-    [SerializeField] private Item.TypeItem[] _receipt = null;
+    [SerializeField] private float timeForOneCreate = 2f;
+    [SerializeField] private Receipt receipt;
 
-    [HideInInspector] public UnityEvent<ReasonStop, Item.TypeItem> onStop = new UnityEvent<ReasonStop, Item.TypeItem>();
-
-    private Item.TypeItem typeCreatedItem;
-
-    private void Awake() 
+    private void Awake()
     {
-        Item item = _createdItem.GetComponent<Item>();
-        typeCreatedItem = item.type;
         StartCoroutine(HandleFactory());
     }
 
-    private IEnumerator HandleFactory() 
+    private IEnumerator HandleFactory()
     {
-        while (true) 
+        while (true)
         {
-            if (_outputItems.IsCanAddItem(_createdItem)) 
+            if (!_inputItems.isEmpty && !_outputItems.isFull)
             {
-                if (RemoveItemsReceipt()) 
+                if (!receipt.put.Any(item => !_inputItems.Hes(item.itemView)))
                 {
-                    isWork = true;
-                    yield return new WaitForSeconds(_timeCreatedItem);
-                    CreteItem();
+                    receipt.put.ForEach(item => _inputItems.Remove(item.itemView));
+                    _outputItems.Add(receipt.get.itemView);
                 }
-                else 
-                {
-                    if (isWork) 
-                    {
-                        onStop?.Invoke(ReasonStop.NoResource, typeCreatedItem);
-                        isWork = false;
-                    }
-                    yield return new WaitForSeconds(0.1F);
-                }
-
-            } else 
-            {
-                if (isWork) 
-                {
-                    onStop?.Invoke(ReasonStop.FullStorage, typeCreatedItem);
-                    isWork = false;
-                }
-                yield return new WaitForSeconds(0.1F);
+                yield return new WaitForSeconds(timeForOneCreate);
             }
+            else yield return null;
         }
     }
-
-    protected virtual bool RemoveItemsReceipt() 
-    {
-        if (_inputItems != null && _receipt != null) 
-        {
-            if (_inputItems.Inventory.countItems < _receipt.Length) return false;
-            var removedItemsFromInventory = new List<GameObject>();
-
-            foreach (Item.TypeItem typeItem in _receipt) 
-            {
-                GameObject objItem = _inputItems.Inventory.GetLastItem(typeItem);
-                if (objItem == null) 
-                {
-                    foreach (GameObject remObjItem in removedItemsFromInventory) 
-                    {
-                        _inputItems.Inventory.AddItem(remObjItem);
-                    }
-                    return false;
-                }
-
-                _inputItems.Inventory.RemoveItem(objItem);
-                removedItemsFromInventory.Add(objItem);
-            }
-            Transform transform = gameObject.transform;
-            foreach (GameObject objItem in removedItemsFromInventory) 
-            {
-                objItem.transform.SetParent(transform);
-                MoverGameObject move = objItem.GetComponent<MoverGameObject>();
-                
-                move.MoveTo(_removedPosItem, Vector3.zero);
-                move.onEndMove.AddListener(delegate () { Destroy(objItem);  });
-            }
-        }
-        return true;
-    }
-
-    protected virtual void CreteItem() 
-    {
-        Transform transform = GetComponent<Transform>();
-        GameObject objItem = Instantiate(_createdItem);
-
-        Transform transformItem = objItem.transform;
-        transformItem.position = transform.TransformPoint(_createdItemPos);
-        transformItem.rotation = transform.rotation * Quaternion.Euler(_createdItemRotation);
-
-        if (!_outputItems.Inventory.AddItem(objItem)) 
-            Debug.LogError("Error add item to storage");
-    }
-
 }
