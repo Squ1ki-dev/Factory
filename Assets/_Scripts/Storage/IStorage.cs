@@ -8,9 +8,9 @@ public interface IStorage
     public bool IsFull => false;
     public bool IsEmpty => false;
     public bool ItemExistInStorage(ItemConfig item);
-    public bool Remove(ItemConfig item);
-    public bool Add(Item item);
-    public bool IsCanAddItem(Item item);
+    public ItemInstance Remove(ItemConfig item);
+    public bool Add(ItemInstance item);
+    public bool IsCanAddItem(ItemInstance item);
     public void UpdatePlaces();
 }
 

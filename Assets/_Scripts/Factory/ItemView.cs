@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Item : MonoBehaviour
+public class ItemView : MonoBehaviour
 {
     public UnityEvent onEndMove = new UnityEvent();
 

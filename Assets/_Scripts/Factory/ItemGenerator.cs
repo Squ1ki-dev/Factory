@@ -18,7 +18,7 @@ public class ItemGenerator : MonoBehaviour
         {
             if (!storage.IsFull)
             {
-                var itemView = Instantiate(generateItem.itemViewPrefab);
+                var itemView = new ItemInstance(generateItem);
                 storage.Add(itemView);
                 yield return new WaitForSeconds(craftTime);
             }
