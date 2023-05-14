@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractableStorage : BaseStorage
+public abstract class InteractableStorageObject : BaseStorageObject
 {
     Coroutine playerCoroutine;
     private void OnTriggerEnter(Collider other)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseStorage : MonoBehaviour, IStorage
+public abstract class BaseStorageObject : MonoBehaviour, IStorage
 {
     public virtual IStorage iStorage => null;
     public abstract bool Add(ItemInstance item);

@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class Factory : MonoBehaviour
 {
-    [SerializeField] private BaseStorage _inputItems = null;
-    [SerializeField] private BaseStorage _outputItems = null;
+    [SerializeField] private BaseStorageObject _inputItems = null;
+    [SerializeField] private BaseStorageObject _outputItems = null;
     [SerializeField] private float timeForOneCreate = 2f;
     [SerializeField] private Receipt receipt;
 

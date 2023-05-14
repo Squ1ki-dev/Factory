@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    [SerializeField] private BaseStorage storage;
+    [SerializeField] private BaseStorageObject storage;
     [SerializeField] private ItemConfig generateItem;
     [SerializeField] private float craftTime;
     private void Awake()
