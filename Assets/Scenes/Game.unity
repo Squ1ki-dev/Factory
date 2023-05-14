@@ -739,6 +739,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage:
+    posForFirstItem: {fileID: 448616656}
+    offsetY: 3
+    inventory:
+      possibleItems:
+      - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
+      limitItems: 10
 --- !u!1 &339453578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage:
+    posForFirstItem: {fileID: 1085085339}
+    offsetY: 3
+    inventory:
+      possibleItems:
+      - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
+      limitItems: 10
 --- !u!1 &1117079940
 GameObject:
   m_ObjectHideFlags: 3
@@ -3221,6 +3235,7 @@ GameObject:
   - component: {fileID: 1293941630}
   - component: {fileID: 1293941629}
   - component: {fileID: 1293941633}
+  - component: {fileID: 1293941634}
   m_Layer: 0
   m_Name: FirstFatory
   m_TagString: Untagged
@@ -3322,6 +3337,22 @@ MonoBehaviour:
   storage: {fileID: 1085085340}
   generateItem: {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
   craftTime: 2
+--- !u!54 &1293941634
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293941627}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1301514170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,6 +3681,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64c0688fa16e48af97938cd0f60cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage:
+    posForFirstItem: {fileID: 686801442}
+    offsetY: 3
+    inventory:
+      possibleItems:
+      - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
+      limitItems: 10
 --- !u!43 &1454452685
 Mesh:
   m_ObjectHideFlags: 0
@@ -6452,6 +6490,11 @@ MonoBehaviour:
   <storage>k__BackingField:
     posForFirstItem: {fileID: 1252034369}
     offsetY: 0.6
+    inventory:
+      possibleItems:
+      - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
+      limitItems: 10
+  <takeTime>k__BackingField: 1
   _joystick: {fileID: 1153211176}
   _moveSpeed: 7
   _rotateSpeed: 7

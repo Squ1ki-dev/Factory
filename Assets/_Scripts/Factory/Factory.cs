@@ -23,7 +23,7 @@ public class Factory : MonoBehaviour
             if (!_inputItems.IsEmpty && !_outputItems.IsFull && !receipt.put.Any(item => !_inputItems.ItemExistInStorage(item)))
             {
                 ItemInstance takedItem = null;
-                receipt.put.ForEach(item => takedItem = _inputItems.Remove(item));
+                receipt.put.ForEach(item => takedItem = _inputItems.TakeLast(item));
                 _outputItems.Add(takedItem);
 
                 yield return new WaitForSeconds(timeForOneCreate);

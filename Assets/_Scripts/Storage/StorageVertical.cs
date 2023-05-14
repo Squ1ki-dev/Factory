@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,9 +7,10 @@ public class StorageVertical : IStorage
     [SerializeField] private Transform posForFirstItem;
     [SerializeField] private float offsetY;
     [SerializeField] private Inventory inventory;
+    public List<ItemConfig> possibleItems => inventory.possibleItems;
     public bool Add(ItemInstance item)
     {
-        if (inventory.IsPossibleItem(item))
+        if (inventory.IsPossibleItem(item) && !inventory.IsFull)
         {
             item.view.transform.SetParent(posForFirstItem);
             var result = inventory.AddItem(item);
@@ -19,7 +21,7 @@ public class StorageVertical : IStorage
     }
     public bool ItemExistInStorage(ItemConfig item) => inventory.ItemExistInInventory(item);
     public bool IsCanAddItem(ItemInstance item) => inventory.IsPossibleItem(item);
-    public ItemInstance Remove(ItemConfig item)
+    public ItemInstance TakeLast(ItemConfig item)
     {
         if (inventory.ItemExistInInventory(item))
         {

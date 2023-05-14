@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74bfb97a25a4a346ab4c83d87168117, type: 3}
   m_Name: OrangeBlockItem
   m_EditorClassIdentifier: 
-  itemView: {fileID: 0}
+  itemViewPrefab: {fileID: -3042166765568948095, guid: 04d5c37aa9640654ebbef5052916fe49,
+    type: 3}
