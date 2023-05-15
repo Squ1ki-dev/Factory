@@ -11,8 +11,9 @@ public abstract class BaseStorage : IStorage
     {
         if (inventory.IsPossibleItem(item) && !inventory.IsFull)
         {
-            item.view.transform.SetParent(root);
             var result = inventory.AddItem(item);
+            if (result)
+                item.view.transform.SetParent(root);
             UpdatePlaces();
             return result;
         }
@@ -20,17 +21,28 @@ public abstract class BaseStorage : IStorage
     }
     public bool ItemExistInStorage(ItemConfig item) => inventory.ItemExistInInventory(item);
     public bool IsCanAddItem(ItemInstance item) => inventory.IsPossibleItem(item);
-    public ItemInstance TakeLast(ItemConfig item)
+    public ItemInstance RemoveAndGetLast(ItemConfig item)
     {
         if (inventory.ItemExistInInventory(item))
         {
+            var removed = inventory.RemoveLast(item);
             UpdatePlaces();
-            return inventory.RemoveItem(item);
+            return removed;
         }
         return null;
     }
+    public ItemInstance GetLast(ItemConfig item)
+    {
+        if (inventory.ItemExistInInventory(item))
+        {
+            return inventory.GetLast(item);
+        }
+        return null;
+    }
+
     public abstract void UpdatePlaces();
+    public int Count(ItemConfig item) => inventory.Count(item);
+
     public bool IsEmpty => inventory.IsEmpty;
     public bool IsFull => inventory.IsFull;
-    public int Count => inventory.Count;
 }

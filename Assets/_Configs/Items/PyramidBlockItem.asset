@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbea33eb22b3f814693fef57870a4fa6, type: 3}
-  m_Name: OrangeBlockReceipt
+  m_Script: {fileID: 11500000, guid: d74bfb97a25a4a346ab4c83d87168117, type: 3}
+  m_Name: PyramidBlockItem
   m_EditorClassIdentifier: 
-  put: []
-  get: []
+  itemViewPrefab: {fileID: -1876623951914188059, guid: 214bdb28d2d8a7141acfb93f0ef86ea4,
+    type: 3}

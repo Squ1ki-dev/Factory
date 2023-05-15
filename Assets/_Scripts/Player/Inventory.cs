@@ -21,9 +21,10 @@ public class Inventory
         }
         return false;
     }
-    public virtual ItemInstance RemoveItem(ItemConfig item) => items.Remove(i => i.config == item);
-    public virtual bool IsPossibleItem(ItemInstance item) => possibleItems.Any(pItem => pItem == item.config);
+    public virtual ItemInstance RemoveLast(ItemConfig item) => items.Remove(i => i.config == item);
+    public virtual ItemInstance GetLast(ItemConfig item) => items.Find(i => i.config == item);
+    public virtual int Count(ItemConfig item) => items.FindAll(i => i.config == item).Count;
+    public virtual bool IsPossibleItem(ItemInstance item) => item != null && possibleItems.Any(pItem => pItem == item.config);
     public virtual bool ItemExistInInventory(ItemConfig item) => items.Find(i => i.config == item) != null;
-    public int Count => items.Count;
 
 }

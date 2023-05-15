@@ -8,9 +8,10 @@ public interface IStorage
     public List<ItemConfig> possibleItems => null;
     public bool IsFull => false;
     public bool IsEmpty => false;
-    public int Count => 0;
     public bool ItemExistInStorage(ItemConfig item);
-    public ItemInstance TakeLast(ItemConfig item);
+    public ItemInstance RemoveAndGetLast(ItemConfig item);
+    public ItemInstance GetLast(ItemConfig item);
+    public int Count(ItemConfig item);
     public bool Add(ItemInstance item);
     public bool IsCanAddItem(ItemInstance item);
     public void UpdatePlaces();

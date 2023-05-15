@@ -8,7 +8,6 @@ public class Factory : MonoBehaviour
 {
     [SerializeField] private BaseStorageObject _inputItems = null;
     [SerializeField] private BaseStorageObject _outputItems = null;
-    [SerializeField] private float timeForOneCreate = 2f;
     [SerializeField] private Receipt receipt;
 
     private void Awake()
@@ -20,13 +19,18 @@ public class Factory : MonoBehaviour
     {
         while (true)
         {
-            if (!_inputItems.IsEmpty && !_outputItems.IsFull && !receipt.put.Any(item => !_inputItems.ItemExistInStorage(item)))
+            if (!_inputItems.IsEmpty && !_outputItems.IsFull && receipt.CanCraftFrom(_inputItems))
             {
-                ItemInstance takedItem = null;
-                receipt.put.ForEach(item => takedItem = _inputItems.TakeLast(item));
-                _outputItems.Add(takedItem);
+                yield return new WaitForSeconds(receipt.timeForCraft);
+                receipt.put.ForEach(receiptItem =>
+                {
+                    for (int i = 0; i < receiptItem.count; i++)
+                    {
+                        _inputItems.RemoveAndGetLast(receiptItem.item);
+                    }
+                });
+                _outputItems.Add(new ItemInstance(receipt.get, transform));
 
-                yield return new WaitForSeconds(timeForOneCreate);
             }
             else yield return null;
         }
