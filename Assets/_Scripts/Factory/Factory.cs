@@ -13,6 +13,11 @@ public class Factory : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(HandleFactory());
+        _inputItems.iStorage.possibleItems.Clear();
+        _inputItems.iStorage.possibleItems.AddRange(receipt.put.Select(p => p.item));
+
+        _outputItems.iStorage.possibleItems.Clear();
+        _outputItems.iStorage.possibleItems.Add(receipt.get);
     }
 
     private IEnumerator HandleFactory()

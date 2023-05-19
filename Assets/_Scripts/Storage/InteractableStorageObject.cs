@@ -12,6 +12,7 @@ public class InteractableStorageObject : BaseStorageObject
     public override bool IsCanAddItem(ItemInstance item) => iStorage.IsCanAddItem(item);
     public override bool ItemExistInStorage(ItemConfig item) => iStorage.ItemExistInStorage(item);
     public override ItemInstance RemoveAndGetLast(ItemConfig item) => iStorage.RemoveAndGetLast(item);
+    public override ItemInstance RemoveAndGetLast() => iStorage.RemoveAndGetLast();
     public override void UpdatePlaces() => iStorage.UpdatePlaces();
     public override ItemInstance GetLast(ItemConfig item) => iStorage.GetLast(item);
     public override int Count(ItemConfig item)=> iStorage.Count(item);

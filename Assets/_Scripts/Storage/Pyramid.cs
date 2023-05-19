@@ -23,14 +23,14 @@ public class PyramidStorage : BaseStorage
     private List<Transform> positions;
     public void SetPositions(List<Transform> pos)
     {
-        inventory.limitItems = pos.Count;
+        limitItems = pos.Count;
         positions = pos;
     }
     public override void UpdatePlaces()
     {
-        for (int i = 0; i < inventory.items.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            var view = inventory.items[i].view;
+            var view = items[i].view;
             view.LocalMoveTo(positions[i].localPosition, positions[i].rotation.eulerAngles);
             view.transform.DOScale(positions[i].localScale, view.moveDuration);
         }

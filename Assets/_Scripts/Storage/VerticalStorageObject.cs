@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class VerticalStorageObject : InteractableStorageObject
 {
-    [SerializeField] private StorageVertical storage;
+    [SerializeField] protected StorageVertical storage;
     public override IStorage iStorage => storage;
 }

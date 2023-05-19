@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5169015522491766421}
   - component: {fileID: 7868074271928537319}
   - component: {fileID: -3042166765568948095}
+  - component: {fileID: 2181716090492732106}
   m_Layer: 8
   m_Name: Block
   m_TagString: Untagged
@@ -96,4 +97,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4074b804799f35347a34aa2b7c92e468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  onEndMove:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &2181716090492732106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587228666285358998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21, y: 0.14999999, z: 0.63}
+  m_Center: {x: 0, y: 0, z: 0}

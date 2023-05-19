@@ -10,6 +10,7 @@ public interface IStorage
     public bool IsEmpty => false;
     public bool ItemExistInStorage(ItemConfig item);
     public ItemInstance RemoveAndGetLast(ItemConfig item);
+    public ItemInstance RemoveAndGetLast();
     public ItemInstance GetLast(ItemConfig item);
     public int Count(ItemConfig item);
     public bool Add(ItemInstance item);

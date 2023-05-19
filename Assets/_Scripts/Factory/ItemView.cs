@@ -7,8 +7,4 @@ using UnityEngine.Events;
 
 public partial class ItemView : MonoBehaviour
 {
-    internal void DoScale()
-    {
-        throw new NotImplementedException();
-    }
 }

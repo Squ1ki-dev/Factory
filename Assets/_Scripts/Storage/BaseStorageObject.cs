@@ -12,6 +12,7 @@ public abstract class BaseStorageObject : MonoBehaviour, IStorage
     public abstract void UpdatePlaces();
     public abstract ItemInstance GetLast(ItemConfig item);
     public abstract int Count(ItemConfig item);
+    public abstract ItemInstance RemoveAndGetLast();
 
     public virtual bool IsEmpty => true;
     public virtual bool IsFull => true;

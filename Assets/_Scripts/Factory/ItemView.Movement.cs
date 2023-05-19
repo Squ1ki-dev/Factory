@@ -6,9 +6,13 @@ using UnityEngine.Events;
 
 public partial class ItemView : MonoBehaviour
 {
-    public UnityEvent onEndMove = new UnityEvent();
+    [HideInInspector] public UnityEvent onEndMove = new UnityEvent();
     public float moveDuration { get; private set; } = 0.5f;
-
+    public Vector3 baseScale { get; private set; }
+    private void Awake()
+    {
+        baseScale = transform.localScale;
+    }
     public void LocalMoveTo(Vector3 pos, Vector3 rotation)
     {
         transform.DOKill();

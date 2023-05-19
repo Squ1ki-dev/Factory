@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
 public partial class Player
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private CharacterController chController;
+    [SerializeField] private float gravityScale;
     private void Move()
     {
         _moveVector = Vector3.zero;
@@ -33,7 +35,6 @@ public partial class Player
                 _animator.SetBool("boxIdle", false);
 
         }
-        chController.Move(_moveVector);
-        // _rigidbody.MovePosition(_rigidbody.position + _moveVector);
+        chController.Move(_moveVector.WithY(-gravityScale * Time.deltaTime));
     }
 }

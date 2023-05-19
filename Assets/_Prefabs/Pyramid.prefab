@@ -53,10 +53,9 @@ MonoBehaviour:
   interactType: 1
   storage:
     <root>k__BackingField: {fileID: 5423598796401884463}
-    inventory:
-      <possibleItems>k__BackingField:
-      - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
-      limitItems: 9999
+    <possibleItems>k__BackingField:
+    - {fileID: 11400000, guid: f53b60ea9a45f1f4db6c16872157d466, type: 2}
+    limitItems: 10
 --- !u!114 &1784634756757061318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,10 +71,9 @@ MonoBehaviour:
   interactType: 1
   storage:
     <root>k__BackingField: {fileID: 5452284995932990954}
-    inventory:
-      <possibleItems>k__BackingField:
-      - {fileID: 11400000, guid: fd3990d1f71a46b4dadce8c1e0321458, type: 2}
-      limitItems: 10
+    <possibleItems>k__BackingField:
+    - {fileID: 11400000, guid: fd3990d1f71a46b4dadce8c1e0321458, type: 2}
+    limitItems: 10
 --- !u!65 &1482332915352586735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,8 +85,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.7817, y: 4.688302, z: 4.6210804}
-  m_Center: {x: -0.1066246, y: 1.844151, z: 0.08400345}
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!54 &1176377889478417654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -167,7 +165,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7e17c3441c8e1264888d5031d0579d7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
